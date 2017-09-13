@@ -1,15 +1,16 @@
 pragma solidity ^0.4.13;
 
-
 contract greeter {
 	/* Add one variable to hold our greeting */
-	string greeting;
+	string[4] greeting = ["Hello World", "Hey Dude", "What's Poppin'", "Yooooo"];
+	uint count=0;
 
 	function greeter(string _greeting) public {
-		greeting = _greeting;
+	    bytes memory greets = bytes(_greeting);
+	    count = greets.length%3;
 	}
 
 	function greet() constant returns (string)  {
-		return greeting;
+		return greeting[count];
 	}
 }
